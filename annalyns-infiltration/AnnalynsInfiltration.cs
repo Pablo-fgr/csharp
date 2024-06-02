@@ -20,15 +20,6 @@ static class QuestLogic
 
     public static bool CanFreePrisoner(bool knightIsAwake, bool archerIsAwake, bool prisonerIsAwake, bool petDogIsPresent)
     {
-        if (knightIsAwake is true && archerIsAwake is true && petDogIsPresent is true) return false;
-        if (knightIsAwake && petDogIsPresent) return true;
-        if (knightIsAwake) return false;
-        if (archerIsAwake) return false;
-        if (prisonerIsAwake && petDogIsPresent) return true;
-        if (prisonerIsAwake && !petDogIsPresent) return true;
-        if (!archerIsAwake && petDogIsPresent) return true;
-        if ((!knightIsAwake || !archerIsAwake || prisonerIsAwake) && petDogIsPresent)return true;
-        
-        return false;
+        return (petDogIsPresent && !archerIsAwake) || (!petDogIsPresent && prisonerIsAwake && !knightIsAwake && !archerIsAwake);
     }
 }
